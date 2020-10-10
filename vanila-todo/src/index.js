@@ -6,6 +6,8 @@ const ul = document.querySelector("ul");
 const ADD_TODO ="ADD_TODO"
 const DELETE_TODO ="DELETE_TODO"
 
+
+//action creator
 const addTodo = (text) =>{
     return {
         type : ADD_TODO,
@@ -27,7 +29,7 @@ const reducer = (state=[], action) => {
         case ADD_TODO:
             return [...state, {text : action.text, id : Date.now()}];
         case DELETE_TODO:
-            return [];
+            return state.filter(toDo => toDo.id !== parseInt(action.id));
         default:
             return state;
     }
